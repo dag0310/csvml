@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title>CSVML Parser</title>
+</head>
+<body>
+  <h1>CSVML Parser</h1>
+  <section style="display: flex;">
+    <textarea id="input" rows="30" placeholder="CSVML input" style="flex: 1;">
+command,shutters_seconds
+time,lat,lon
+
+shutters_down,10
+sunset,47.076668,15.421371
+
+#shutters_up
+09:00
+
+#light_on
+03:40
+
+light_off
+23:00
+
+#shutters_down,2
+14:30</textarea>
+    <textarea id="output" rows="30" placeholder="JSON output" style="flex: 1;"></textarea>
+  </section>
+  <script type="module">
+    import Csvml from './src/csvml.js';
+    const csvml = new Csvml();
+
+    const inputTextArea = document.getElementById('input');
+    const outputTextArea = document.getElementById('output');
+
+    function parseToOutput(csvmlStr) {
+      outputTextArea.value = JSON.stringify(csvml.parse(csvmlStr), null, 2);
+    }
+
+    inputTextArea.addEventListener('input', event => { parseToOutput(event.target.value); });
+    parseToOutput(inputTextArea.value);
+  </script>
+</body>
+</html>
