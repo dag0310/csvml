@@ -1,6 +1,6 @@
 {
   "name": "csvml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parser for structured data in a comma-separated and line-based format.",
   "main": "src/index.js",
   "type": "module",

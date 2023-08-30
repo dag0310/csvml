@@ -4,6 +4,26 @@ Structure data in a comma-separated and line-based format. Or: I had one very sp
 
 Suggested file extension: `.csvml`
 
+## Installation
+
+`npm install --save csvml`
+
+## Usage
+
+```html
+<script type="module">
+import Csvml from './csvml.js';
+
+const csvData = `command,shutters_seconds
+time,lat,lon
+
+shutters_down,10
+sunset,47.076668,15.421371`
+
+const obj = Csvml.parse(csvData);
+</script>
+```
+
 ## Syntax
 
 - The first entry of lines defines the property names
