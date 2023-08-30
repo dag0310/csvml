@@ -24,7 +24,7 @@ light_off
     14:30`;
 
     // when
-    const output = new Csvml().parse(input);
+    const output = Csvml.parse(input);
 
     // then
     expect(JSON.stringify(output)).to.equal(JSON.stringify([
@@ -38,7 +38,7 @@ light_off
       {
         command: 'light_off',
         time: '23:00',
-      }
+      },
     ]));
   });
 });

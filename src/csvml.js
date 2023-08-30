@@ -1,16 +1,13 @@
 class Csvml {
-  constructor() {
-  }
-
-  parse(input) {
+  static parse(input) {
     const objects = [];
     const entries = input.trim().split('\n\n');
     if (entries.length < 2) {
       return objects;
     }
     const definitionLines = entries[0].split('\n');
-    for (let idx = 0; idx < definitionLines.length; idx++) {
-      definitionLines[idx] = definitionLines[idx].split(',').map(a => a.trim());
+    for (let idx = 0; idx < definitionLines.length; idx += 1) {
+      definitionLines[idx] = definitionLines[idx].split(',').map((token) => token.trim());
     }
     for (const entry of entries.slice(1)) {
       const lines = entry.split('\n');
@@ -21,9 +18,9 @@ class Csvml {
         continue;
       }
       const obj = {};
-      for (let linesIdx = 0; linesIdx < lines.length; linesIdx++) {
+      for (let linesIdx = 0; linesIdx < lines.length; linesIdx += 1) {
         const tokens = lines[linesIdx].split(',');
-        for (let tokensIdx = 0; tokensIdx < tokens.length; tokensIdx++) {
+        for (let tokensIdx = 0; tokensIdx < tokens.length; tokensIdx += 1) {
           const key = definitionLines[linesIdx][tokensIdx];
           if (key == null || key === '') {
             continue;

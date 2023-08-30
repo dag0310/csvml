@@ -28,16 +28,15 @@ light_off
   </section>
   <script type="module">
     import Csvml from './src/csvml.js';
-    const csvml = new Csvml();
 
     const inputTextArea = document.getElementById('input');
     const outputTextArea = document.getElementById('output');
 
     function parseToOutput(csvmlStr) {
-      outputTextArea.value = JSON.stringify(csvml.parse(csvmlStr), null, 2);
+      outputTextArea.value = JSON.stringify(Csvml.parse(csvmlStr), null, 2);
     }
 
-    inputTextArea.addEventListener('input', event => { parseToOutput(event.target.value); });
+    inputTextArea.addEventListener('input', (event) => { parseToOutput(event.target.value); });
     parseToOutput(inputTextArea.value);
   </script>
 </body>
